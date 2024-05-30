@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button, Container, Row, Col, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   // eslint-disable-next-line no-unused-vars
@@ -30,7 +31,10 @@ export default function HomePage() {
                     Some quick example text to build on the card title and make
                     up the bulk of the cards content.
                   </Card.Text>
-                  <Button variant="secondary">Read More</Button>
+
+                  <Link to="/blog/12312">
+                    <Button variant="secondary">Read More</Button>
+                  </Link>
                 </Card.Body>
               </Card>
             ))}

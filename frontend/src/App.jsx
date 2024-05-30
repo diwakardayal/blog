@@ -11,7 +11,8 @@ import { Container } from "react-bootstrap";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "./App.css";
-
+import BlogPage from "./BlogPage";
+import AdminDashBoard from "./admin/AdminDashboard";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<SignInForm />} />
             <Route path="/register" element={<SignUpForm />} />
+            <Route path="/blog/:id" element={<BlogPage />} />
+            <Route path="/admin" element={<AdminDashBoard />} />
             <Route path="/*" element={<PageNotFound />} />
           </Routes>
         </Container>
