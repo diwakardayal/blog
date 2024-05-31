@@ -2,9 +2,12 @@
 import { useState } from "react";
 import { Button, Container, Row, Col, Card } from "react-bootstrap";
 import CreatePostModal from "../components/CreatePostModal";
+import { createPost } from "../services/blog";
+import { useToast } from "react-toastify";
 
 export default function CreatePostCard() {
   const [isCreatePostBtnClicked, setIsCreatePostBtnClicked] = useState(false);
+  const [content, setContent] = useState("");
 
   return (
     <>
@@ -32,8 +35,7 @@ export default function CreatePostCard() {
       <CreatePostModal
         isModalVisible={isCreatePostBtnClicked}
         onClose={() => setIsCreatePostBtnClicked(false)}
-        title={"SMAPE"}
-        body={"body"}
+        // refreshBlogs={refreshBlogs}
       />
     </>
   );

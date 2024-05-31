@@ -1,7 +1,7 @@
 /** @format */
 
 const jsonWebToken = require("jsonwebtoken");
-const User = require("../db/models/userModel");
+const User = require("../db/models/user");
 const asyncHandler = require("./asyncHandler");
 
 const requireAuth = asyncHandler(async (req, res, next) => {

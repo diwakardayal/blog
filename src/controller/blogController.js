@@ -54,12 +54,18 @@ const createBlogPost = asyncHandler(async (req, res) => {
 const updateBlogPost = asyncHandler(async (req, res) => {
   const { postId, title, content } = req.body;
 
+  console.log(postId, title, content);
   if (!postId || !title || !content) {
     res.status(400);
     throw new Error("Please provide postId, title, content");
   }
 
   const post = await Blog.findByPk(postId);
+
+  if (!post) {
+    res.status(404);
+    throw new Error("Post not found");
+  }
   post.title = title || post.title;
   post.content = content || post.content;
 
@@ -74,9 +80,11 @@ const updateBlogPost = asyncHandler(async (req, res) => {
 const deleteBlogPost = asyncHandler(async (req, res) => {
   const { postId } = req.body;
 
+  console.log(req.body);
+
   if (!postId) {
     res.status(400);
-    throw new Error("Please provide postId, title, content");
+    throw new Error("Please provide postId");
   }
 
   const post = await Blog.findByPk(postId);
