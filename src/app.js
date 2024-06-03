@@ -26,10 +26,11 @@ app.listen(PORT, () => {
 });
 
 const dirname = path.resolve();
-app.use(express.static(path.join(dirname, "/frontend/dist")));
-app.get("*", (req, res) =>
-  // eslint-disable-next-line implicit-arrow-linebreak
-  res.sendFile(path.resolve(dirname, "frontend", "dist", "index.html")));
+app.use(express.static(path.join(dirname, "frontend", "/dist")));
+app.get("*", (req, res) => {
+  app.use(express.static(path.resolve(dirname, "frontend", "dist")));
+  res.sendFile(path.resolve(dirname, "frontend", "dist", "index.html"));
+});
 
 app.use(notFound);
 app.use(errorHandler);
